@@ -87,7 +87,7 @@ def get_img_file(filename):
     img_list = []
     for parent, dirname, filenames in os.walk(filename):
         for filename in filenames:
-            if filename.lower().endswith(('.bmp','.dib','.png','.pbm','.pgm','ppm','.tif','tiff')):
+            if filename.lower().endswith(('.bmp','.dib','.png','.pbm','.pgm','.ppm','.tif','tiff')):
                 img_list.append(os.path.join(parent,filename))
     return img_list
 
@@ -140,7 +140,7 @@ def img_tool():
             out_image_path = input_image_path + os.sep + '../img_'
             make_dir(out_image_path)
             path_list = get_img_file(input_image_path)
-            for i in range(len(path_list)):
+            for i in tqdm(range(len(path_list))):
                 compress_img(path_list[i], out_image_path)
         elif os.path.isfile(input_image_path):
             out_image_path = input_image_path + os.sep + '../../img_'
